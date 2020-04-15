@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_GRV, F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,
 		_______, KC_MPRV, KC_MPLY, KC_MNXT, _______, XXXXXXX, XXXXXXX, KC_PGUP, KC_UP, KC_PGDN, XXXXXXX, _______, _______,
 		_______, KC_VOLD, KC_VOLU, KC_MUTE, _______, XXXXXXX, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_INS, _______, _______, _______,
-		_______, _______, _______, _______, _______, XXXXXXX, KC_END, XXXXXXX, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______, _______, XXXXXXX, KC_END, XXXXXXX, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______, _______, _______),
 
 	LAYOUT_60_iso(
