@@ -3,6 +3,39 @@
 #define _LAYER_DFLT 0
 #define _LAYER_FUNC 1
 #define _LAYER_XTRA 2
+#define _LAYER_EMOJ 3
+
+enum unicode_names {
+    BANG,
+    IRONY,
+    SNEK,
+    POOP,
+    SHRUG,
+    GRIN,
+    ROFL,
+    HEART,
+    NTRL,
+    COOL,
+    NERD,
+    SKULL,
+    CAT
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [BANG]  = 0x203D,  // ‽
+    [IRONY] = 0x2E2E,  // ⸮
+    [SNEK]  = 0x1F40D, // 🐍
+    [POOP]  = 0x1F4A9, // 💩
+    [SHRUG] = 0x1F937, // 🤷
+    [GRIN]  = 0x1F604, // 😄
+    [ROFL]  = 0x1F923, // 🤣
+    [HEART] = 0x1F60D, // 😍
+    [NTRL]  = 0x1F610, // 😐
+    [COOL]  = 0x1F60E, // 😎
+    [NERD]  = 0x1F913, // 🤓
+    [SKULL] = 0x2620,  // ☠️
+    [CAT]   = 0x1F408, // 🐈
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	/* ISO 6u layout layer 0 (DE Layout shown)
@@ -24,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TAB,	KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC,
 		MO(_LAYER_FUNC), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_BSLS, KC_ENT,
 		KC_LSFT, KC_NUBS, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
-		KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, MO(_LAYER_FUNC), MO(_LAYER_XTRA), KC_RCTL),
+		KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, MO(_LAYER_XTRA), MO(_LAYER_EMOJ), KC_RCTL),
 
 	LAYOUT_60_iso(
 		KC_GRV, F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,
@@ -38,5 +71,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		_______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, VLK_TOG, _______, _______, _______, _______, RESET, _______, _______, _______,
+		_______, _______, _______, _______, _______, _______, _______, _______),
+
+	LAYOUT_60_iso(
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, X(POOP), _______, _______,
+		_______, _______, X(SHRUG), X(GRIN), _______, _______, X(HEART), _______, X(CAT), _______, _______, _______, _______, _______,
+		_______, _______, _______, X(SKULL), X(COOL), _______, X(NERD), X(NTRL), _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______, _______, _______),
 };
