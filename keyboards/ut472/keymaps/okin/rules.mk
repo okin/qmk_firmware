@@ -7,3 +7,4 @@ NKRO_ENABLE = yes		# USB Nkey Rollover - if this doesn't work, see here: https:/
 BACKLIGHT_ENABLE = no   # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = yes   # Enable RGB keyboard backlight functionality
 UNICODEMAP_ENABLE = no  # Add support for Unicode map - emojies :)
+TAP_DANCE_ENABLE = yes  # Add tap dance support

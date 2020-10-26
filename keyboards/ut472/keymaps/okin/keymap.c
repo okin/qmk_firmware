@@ -23,13 +23,34 @@
 #define LT3_TAB LT(_LAYER_FUNC, KC_TAB)
 
 
+// Tap Dance declarations
+enum {
+    TD_SLASH_QMARK,
+    TD_UML_A,
+    TD_UML_U,
+    TD_UML_O,
+};
+
+// Tap Dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [TD_SLASH_QMARK] = ACTION_TAP_DANCE_DOUBLE(KC_SLASH, KC_MINS),
+    [TD_UML_A] = ACTION_TAP_DANCE_DOUBLE(KC_A, KC_QUOT),
+    [TD_UML_O] = ACTION_TAP_DANCE_DOUBLE(KC_O, KC_SCLN),
+    [TD_UML_U] = ACTION_TAP_DANCE_DOUBLE(KC_U, KC_LBRC),
+};
+
+#define UML_A TD(TD_UML_A)
+#define UML_O TD(TD_UML_O)
+#define UML_U TD(TD_UML_U)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Base Layer
    * ,-------------------------------------------------------------------------.
-   * | Esc |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |Bspace |
+   * | Esc |  Q  |  W  |  E  |  R  |  T  |  Y  | U/Ü |  I  | O/Ö |  P  |Bspace |
    * |-------------------------------------------------------------------------+
-   * |Tab/L3|  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  | + * |Enter |
+   * |Tab/L3| A/Ä |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  | + * |Enter |
    * |-------------------------------------------------------------------------+
    * | Shift |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  | # ' |
    * |-------------------------------------------------------------------------+
@@ -37,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------'
    */
   LAYOUT(
-    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    LT3_TAB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_RBRC, KC_ENT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
+    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    UML_U,   KC_I,    UML_O,   KC_P,    KC_BSPC,
+    LT3_TAB, UML_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_RBRC, KC_ENT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD(TD_SLASH_QMARK), KC_BSLS,
     KC_LCTL, KC_LGUI, KC_LALT, KC_APP, MO(_LAYER_L),  KC_SPC  , MO(_LAYER_R), KC_RALT, XXXXXXX, XXXXXXX, KC_RCTL
   ),
 
