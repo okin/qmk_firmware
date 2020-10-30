@@ -120,13 +120,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const rgblight_segment_t PROGMEM layer_r_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
-    {1, 6, HSV_CYAN}
+    {0, 8, HSV_CYAN}
 );
 const rgblight_segment_t PROGMEM layer_l_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
-    {1, 6, HSV_YELLOW}
+    {0, 8, HSV_YELLOW}
 );
 const rgblight_segment_t PROGMEM layer_func_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
-    {1, 6, HSV_GREEN}
+    {0, 8, HSV_GREEN}
 );
 
 // Now define the array of layers. Later layers take precedence
