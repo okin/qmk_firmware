@@ -123,7 +123,7 @@ const rgblight_segment_t PROGMEM layer_r_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 8, HSV_CYAN}
 );
 const rgblight_segment_t PROGMEM layer_l_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 8, HSV_YELLOW}
+    {0, 8, HSV_PURPLE}
 );
 const rgblight_segment_t PROGMEM layer_func_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 8, HSV_GREEN}
