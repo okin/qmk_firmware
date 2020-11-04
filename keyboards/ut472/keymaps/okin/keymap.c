@@ -19,6 +19,7 @@
 #define _LAYER_R 1
 #define _LAYER_L 2
 #define _LAYER_FUNC 3
+#define _LAYER_NUM 4
 
 #define LT3_TAB LT(_LAYER_FUNC, KC_TAB)
 
@@ -30,6 +31,7 @@ enum {
     TD_UML_A,
     TD_UML_U,
     TD_UML_O,
+    TD_NUM_COMMA,
 };
 
 // Tap Dance definitions
@@ -38,11 +40,13 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_UML_A] = ACTION_TAP_DANCE_DOUBLE(KC_A, KC_QUOT),
     [TD_UML_O] = ACTION_TAP_DANCE_DOUBLE(KC_O, KC_SCLN),
     [TD_UML_U] = ACTION_TAP_DANCE_DOUBLE(KC_U, KC_LBRC),
+    [TD_NUM_COMMA] = ACTION_TAP_DANCE_DOUBLE(KC_KP_COMMA, KC_KP_DOT)
 };
 
 #define UML_A TD(TD_UML_A)
 #define UML_O TD(TD_UML_O)
 #define UML_U TD(TD_UML_U)
+#define NP_COMDOT TD(TD_NUM_COMMA)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -55,14 +59,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-------------------------------------------------------------------------+
    * | Shift |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  | # ' |
    * |-------------------------------------------------------------------------+
-   * | Ctrl| Gui | Alt | App |  L2  |   Space   |  L1  |AltGr|     |     |Right|
+   * | Ctrl| Gui | Alt | App |  L2  |   Space   |  L1  |AltGr|     | TL4 |Right|
    * `-------------------------------------------------------------------------'
    */
   LAYOUT(
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    UML_U,   KC_I,    UML_O,   KC_P,    KC_BSPC,
     LT3_TAB, UML_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_RBRC, KC_ENT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD(TD_SLASH_QMARK), KC_BSLS,
-    KC_LCTL, KC_LGUI, KC_LALT, KC_APP, MO(_LAYER_L),  KC_SPC  , MO(_LAYER_R), KC_RALT, XXXXXXX, XXXXXXX, KC_RCTL
+    KC_LCTL, KC_LGUI, KC_LALT, KC_APP, MO(_LAYER_L),  KC_SPC  , MO(_LAYER_R), KC_RALT, XXXXXXX, TG(_LAYER_NUM), KC_RCTL
   ),
 
   /* FN Layer 1
@@ -118,6 +122,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_END, XXXXXXX, _______, _______, _______,
     _______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______
   ),
+
+  /* FN Layer 4
+   * ,-------------------------------------------------------------------------.
+   * |  °  |     |     |     |     |     |     |  7  |  8  |  9  |     |       |
+   * |-------------------------------------------------------------------------+
+   * |      |     |     |     |     |     |     |  4  |  5  |  6  |     |      |
+   * |-------------------------------------------------------------------------+
+   * |       |     |     |     |     |     |     |  1  |  2  |  3  |     |     |
+   * |-------------------------------------------------------------------------+
+   * |     |     |     |     |      |          |   0   | . , |     |     | TL4 |
+   * `-------------------------------------------------------------------------'
+   */
+  LAYOUT( /* Numbers */
+    _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_7, KC_KP_8, KC_KP_9, XXXXXXX, _______,
+    _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_4, KC_KP_5, KC_KP_6, XXXXXXX, _______,
+    _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_1, KC_KP_2, KC_KP_3, XXXXXXX, _______,
+    _______, _______, _______, _______, _______,     _______,      KC_KP_0, NP_COMDOT, _______, XXXXXXX, TG(_LAYER_NUM)
+  ),
 };
 
 const rgblight_segment_t PROGMEM layer_r_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -129,12 +151,17 @@ const rgblight_segment_t PROGMEM layer_l_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
 const rgblight_segment_t PROGMEM layer_func_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 8, HSV_GREEN}
 );
+const rgblight_segment_t PROGMEM layer_num_rgb[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_WHITE},
+    {6, 2, HSV_WHITE}
+);
 
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     layer_func_rgb,
     layer_r_rgb,    // Overrides previous layer
-    layer_l_rgb     // Overrides previous layer
+    layer_l_rgb,    // Overrides previous layer
+    layer_num_rgb   // Overrides previous layer
 );
 
 void keyboard_post_init_user(void) {
@@ -147,5 +174,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(0, layer_state_cmp(state, _LAYER_FUNC));
     rgblight_set_layer_state(1, layer_state_cmp(state, _LAYER_R));
     rgblight_set_layer_state(2, layer_state_cmp(state, _LAYER_L));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _LAYER_NUM));
     return state;
 }
