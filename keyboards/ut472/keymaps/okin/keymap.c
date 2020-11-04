@@ -16,14 +16,13 @@
 
 #include QMK_KEYBOARD_H
 
-#define DE_TILD ALGR(KC_RBRC) // ~
-
 #define _LAYER_R 1
 #define _LAYER_L 2
 #define _LAYER_FUNC 3
 
 #define LT3_TAB LT(_LAYER_FUNC, KC_TAB)
 
+#define DE_TILD ALGR(KC_RBRC) // ~
 
 // Tap Dance declarations
 enum {
