@@ -138,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_7, KC_KP_8, KC_KP_9, XXXXXXX, _______,
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_4, KC_KP_5, KC_KP_6, XXXXXXX, _______,
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_1, KC_KP_2, KC_KP_3, XXXXXXX, _______,
-    _______, _______, _______, _______, _______,     _______,      KC_KP_0, NP_COMDOT, _______, XXXXXXX, TG(_LAYER_NUM)
+    _______, _______, _______, _______, _______,     _______,      KC_KP_0, NP_COMDOT, KC_NUMLOCK, TG(_LAYER_NUM), _______
   ),
 };
 
