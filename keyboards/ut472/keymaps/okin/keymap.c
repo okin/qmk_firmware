@@ -198,7 +198,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(0, layer_state_cmp(state, _LAYER_FUNC));
     rgblight_set_layer_state(1, layer_state_cmp(state, _LAYER_R));
     rgblight_set_layer_state(2, layer_state_cmp(state, _LAYER_L));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _LAYER_CODE));
-    rgblight_set_layer_state(3, layer_state_cmp(state, _LAYER_NUM));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _LAYER_CODE));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _LAYER_NUM));
     return state;
 }
