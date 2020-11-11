@@ -16,11 +16,14 @@
 
 #include QMK_KEYBOARD_H
 
-#define _LAYER_R 1
-#define _LAYER_L 2
-#define _LAYER_FUNC 3
-#define _LAYER_NUM 4
-#define _LAYER_CODE 5
+enum layers {
+  _LAYER_BASE,
+  _LAYER_R,
+  _LAYER_L,
+  _LAYER_FUNC,
+  _LAYER_NUM,
+  _LAYER_CODE
+};
 
 #define LT3_TAB LT(_LAYER_FUNC, KC_TAB)
 
@@ -63,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * | Ctrl| Gui | Alt | App |  L2  |   Space   |  L1  |AltGr|     | TL4 |Right|
    * `-------------------------------------------------------------------------'
    */
-  LAYOUT(
+  [_LAYER_BASE] = LAYOUT(
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    UML_U,   KC_I,    UML_O,   KC_P,    KC_BSPC,
     LT3_TAB, UML_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_RBRC, KC_ENT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD(TD_SLASH_QMARK), KC_BSLS,
@@ -81,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |     |     |     |Capsl|      |          |       | Home| PgDn| PgUp| End |
    * `-------------------------------------------------------------------------'
    */
-  LAYOUT( /* Right */
+  [_LAYER_R] = LAYOUT( /* Right */
     DE_TILD, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DELETE,
     _______, RGB_TOG, RGB_MOD, RGB_VAI, RGB_VAD, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
     _______, KC_F11,  KC_F12, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -99,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |     |     |     |Capsl|      |          |       | Home| PgDn| PgUp| End |
    * `-------------------------------------------------------------------------'
    */
-  LAYOUT( /* Left */
+  [_LAYER_L] = LAYOUT( /* Left */
     KC_GRV, KC_EXCLAIM, KC_AT, KC_HASH, KC_DOLLAR, KC_PERCENT, KC_CIRCUMFLEX, KC_AMPERSAND, KC_ASTERISK, KC_LEFT_PAREN, KC_RIGHT_PAREN, KC_DELETE,
     _______, _______, _______, _______, _______, _______, _______, KC_UNDERSCORE, KC_PLUS, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_PIPE,
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
@@ -117,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |     |     |     |     |      |          |       |     |     |     |     |
    * `-------------------------------------------------------------------------'
    */
-  LAYOUT( /* Tab */
+  [_LAYER_FUNC] = LAYOUT( /* Tab */
     KC_TILDE, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, XXXXXXX, KC_PGUP, KC_UP, KC_PGDN, XXXXXXX, KC_DELETE,
     _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_INS, _______,
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_END, XXXXXXX, _______, _______, _______,
@@ -135,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |     |     |     |     |      |          |   0   | . , |     |     | TL4 |
    * `-------------------------------------------------------------------------'
    */
-  LAYOUT( /* Numbers */
+  [_LAYER_NUM] = LAYOUT( /* Numbers */
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_7, KC_KP_8, KC_KP_9, XXXXXXX, _______,
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_4, KC_KP_5, KC_KP_6, XXXXXXX, _______,
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_KP_1, KC_KP_2, KC_KP_3, XXXXXXX, _______,
@@ -154,7 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * | Ctrl| Gui | Alt | App |  L2  |   Space   |  L1  |AltGr|     | TL4 |Right|
    * `-------------------------------------------------------------------------'
    */
-  LAYOUT(
+  [_LAYER_CODE] = LAYOUT(
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     LT3_TAB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_RBRC, KC_ENT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH, KC_BSLS,
