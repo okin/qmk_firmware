@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* FN Layer 3
    * ,-------------------------------------------------------------------------.
-   * |  °  |Prev| Play | Next|     |     |     | PgUp|  Up | PgDn|     | Delete|
+   * |     |Prev| Play | Next|     |     |     | PgUp|  Up | PgDn|     | Delete|
    * |-------------------------------------------------------------------------+
    * |      | Vol-| Vol+| Mute|     |     | Home| Left| Down|Right| Ins |      |
    * |-------------------------------------------------------------------------+
@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------'
    */
   [_LAYER_FUNC] = LAYOUT( /* Tab */
-    KC_TILDE, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, XXXXXXX, KC_PGUP, KC_UP, KC_PGDN, XXXXXXX, KC_DELETE,
+    _______, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, XXXXXXX, KC_PGUP, KC_UP, KC_PGDN, XXXXXXX, KC_DELETE,
     _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_INS, _______,
     _______, _______, _______, _______, _______, _______, XXXXXXX, KC_END, XXXXXXX, _______, _______, _______,
     _______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______
